@@ -9,3 +9,5 @@ python-docx
 reportlab
 flask-cors
 psycopg2-binary
+gunicorn
+
