@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interior AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Interior AI</h2>
+    <nav>
+      <a href="#" onclick="showSection('dashboard')">Dashboard</a>
+      <a href="#" onclick="showSection('project')">Project View</a>
+      <a href="#" onclick="showSection('reports')">Reports</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Dashboard -->
+    <section id="dashboard" class="page active card">
+      <h1>📂 Dashboard</h1>
+      <p>Upload design files and preview instantly.</p>
+      <input type="file" id="fileUpload" accept="application/pdf" />
+      <button onclick="uploadFile()">Upload</button>
+
+      <!-- PDF Preview after upload -->
+      <div id="pdfPreviewCard" class="pdf-card hidden">
+        <h2>📑 Uploaded PDF Preview</h2>
+        <iframe id="pdfViewer" width="100%" height="400px"></iframe>
+      </div>
+    </section>
+
+    <!-- Project View -->
+    <section id="project" class="page card">
+      <h1>🏡 Project View</h1>
+      <p>Manage annotations, discussions, and AI suggestions.</p>
+      <div class="annotation-container">
+        <canvas id="annotationCanvas"></canvas>
+        <button onclick="saveAnnotation()">💾 Save Annotation</button>
+      </div>
+
+      <div class="chat-box">
+        <div id="chat-messages"></div>
+        <input type="text" id="chatInput" placeholder="Ask AI Assistant..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
+
+    <!-- Reports -->
+    <section id="reports" class="page card">
+      <h1>📑 Reports</h1>
+      <p>Generated reports will appear here.</p>
+      <button onclick="previewReport()">Preview Latest Report</button>
+      <div id="reportPreview" class="pdf-viewer hidden">
+        <iframe id="pdfFrame" width="100%" height="500px"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
